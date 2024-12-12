@@ -1,0 +1,47 @@
+public class WideningExample {
+    public static void main(String[] args) {
+        //Widening can be done in all cases without casting
+
+        char myChar = 'a'; // this is integer value 97
+
+        byte myByte = 0; // this is narrowing . 0 is an int narrowed to a byte
+        short myShort;
+
+        // Exact literal type assignment
+        int myInt = 0;
+        float myFloat = 0.0f;
+        double myDouble = 0.0;
+
+        // Widening with literals
+        long myLong = 0; // widening an int to Long
+        myDouble = 0.0f; // widening a float literal to a double
+
+        // Example of Widening with variables
+
+        // Since assignments are right to left..
+        // value in myByte is widened to short when assigned to myShort
+        // value in myShort is widened to int when assigned to myInt
+        // value in myInt is widened to long when assigned to myLong
+        // value in myLong is widened to float when assigned to myFloat
+        // value in myFloat is widened to double when assigned to myDouble
+
+        myDouble = myFloat = myLong = myInt = myShort = myByte;
+
+        System.out.println("Happy Widening");
+
+        myByte = 'a'; // literal char is widened to int then narrowed to byte so ok.
+       // myByte = myChar;
+        // The following combine both narrowing and widening primitive conversations.
+        // First, the byte is converted to an int via widening primitive
+        // and then resulting int is converted to a char by narrowing .
+        //So... This does not work for variables,compiler does not have enough information to
+        // determine if the narrowing is ok.
+//        myChar = myByte;
+
+        // short and char are the same width but char is unsigned so conversion is not allowed.
+//        myShort = myChar;
+//        myChar = myShort;
+
+        System.out.println("myByte = "+myByte);
+    }
+}
